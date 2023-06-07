@@ -5,3 +5,40 @@ Investor sentiments play a particular role in moving the valuation of crypto. Fo
 
 High-level overview of the lakehouse architecture:
 ![Screenshot 2023-06-07 at 6 08 16 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/b7493ea4-c3e2-40f8-9c35-adcf3f1514cc)
+
+**DATA SOURCES:**
+
+We have 2 data sources to lay down our big data pipeline.
+
+
+1. Real-time tweets of cryptocurrency investors and infuencers
+2. Yahoo Finance data on cryptocurrency price movement.
+
+**Technology Stack**
+
+
+- Minio
+- Jupyter Notebook
+- Spark (for tweets NLP, ML and data processing)
+- Postgres SQL
+- Apache Superset
+
+Here's a high-level overview of how the above technologies can be connected to build a data lake:
+
+
+1. Data ingestion with Python+Minio: Minio is used as an S3 storage to ingest data from various sources coupled with Python. All raw data will be stored in Minio.
+
+2. Data processing with Spark: Apache Spark to be used as a big data processing engine to process and analyze the ingested data. Spark can handle both batch and real-time processing and provide scalable and distributed computing. Processed data will be stored in Postgres SQL.
+
+3. Data preprocessing on Jupyter-Pyspark: Spark to integrate data from Kafka, Cassandra, and Postgres. Spark can provide a unified view of the data, regardless of its source or format.
+
+4. Data storage with Postgres: PostgreSQL will be used as a relational database to store structured data. PostgreSQL provides a rich set of features for data management, including ACID compliance and support for complex queries.
+
+6. Data visualization and reporting: Apache Superset to be used as a visualization and reporting tool to interact with and derive insights from the processed data.
+
+All of the above will be built on docker containers and will interact over docker network.
+
+Overall, we believe this architecture provides a scalable, reliable, and efficient way to build a data lake that can handle real-time data ingestion, storage, and processing. It also allows us to integrate and analyze data from various sources using Spark, and visualize the results using reporting and visualization tools.
+
+# Getting Started with Setting up the Containers #
+
