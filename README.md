@@ -169,3 +169,34 @@ docker exec -it superset superset init
 * Enter Minio username and password to launch your homescreen
 
 ![Screenshot 2023-06-07 at 9 26 03 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/be24591e-faac-45d9-8f3a-fb731ede85ac)
+
+* Create your first bucket and dump an supporting data related to your use-case.
+
+![Screenshot 2023-06-07 at 10 03 56 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/25e492cc-ba09-4573-b920-303fb7369fd5)
+
+* Generate your access key and secret key to use with Minio API. This will come handy later when you'll be using python to extract data from Minio. Go to `Access Keys` in the left sidebar and click on `Create access key`. Save the generated tokens on your machine.
+
+![Screenshot 2023-06-07 at 10 05 37 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/de37fbac-a7b3-46b2-83c1-59391419eef9)
+
+Now let's move on to PgAdmin and connect it to our Postgres server.
+
+## Setting up PgAdmin with Postgres
+Click on “Add New Server” in the middle of the page under “Quick Links” or right-click on “Server” in the top left and choose “Create” -> “Server…”.
+We need to configure the connection detail to add a new database server:
+1. In the General tab: choose a name for your database server, e.g. `postgres_db`
+2. In the Connection tab: The “Hostname/address” is not “localhost” but the IP address of the postgres container — as the containers will need to talk to each other via the docker network. Since we are on a user defined network, we can just use the hostname `host.docker.internal` instead of a fixed IP-address and let docker take care of DNS resolving in the background.
+3. In the Connection tab: The port is the standard application port of the postgres database — `5432`.
+4. In the Connection tab: The username and password are specified in the docker-compose.yml as environment variables of the postgres service (airflow and airflow if you haven't yet changed it).
+
+![Screenshot 2023-06-07 at 10 13 16 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/daebd835-ecdb-4afd-8dfe-8a3b65fd9c2b)
+
+## Connecting Superset with our Postgres Database
+
+From your Superset homescreen, click on `Settings` --> `Database Connections` --> `Connect a Database` --> `PostgresSQL`
+Fill in these details in the dialog modal:
+
+![Screenshot 2023-06-07 at 10 22 27 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/ba9fb2b7-9dd0-4027-b82b-c00d7a0df2d3)
+
+Now that we're all set and connected, we're ready to roll and crunch some numbers!
+
+
