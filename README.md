@@ -198,6 +198,9 @@ Fill in these details in the dialog modal:
 ![Screenshot 2023-06-07 at 10 22 27 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/ba9fb2b7-9dd0-4027-b82b-c00d7a0df2d3)
 
 Now that we're all set and connected, we're ready to roll and crunch some numbers!
+
+## Connecting Superset with our Postgres Database
+
 Here are some screenshots of our analysis done on Superset!
 
 ![Screenshot 2023-06-07 at 10 28 17 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/661ce436-ae45-41e4-b82b-774931ca3d7f) ![Screenshot 2023-06-07 at 10 29 08 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/fad86980-d45c-4e9a-b624-9da1ad150aeb)
