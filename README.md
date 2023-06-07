@@ -56,6 +56,9 @@ docker pull bde2020/spark-master:3.2.0-hadoop3.2
 docker pull bde2020/spark-worker:3.2.0-hadoop3.2
 ~~~
 ~~~
+docker pull apache/superset
+~~~
+~~~
 docker pull jupyter/pyspark-notebook:latest
 ~~~
 ~~~
@@ -89,3 +92,48 @@ Navigate to the project directory, then to docker folder. On the CLI, run the co
 docker compose -f docker-compose.yml -f docker-compose.spark.yml up -d
 ~~~
 
+To ensure the services are running, you can click on the following URLs:
+
+### Jupyter: http://localhost:8888
+
+* For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. 
+* The URL with the token can be taken from container logs using:
+ 
+```
+docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:spark-3.2.0") 2>&1 | grep 'http://127.0.0.1' | tail -1
+```
+Alternatively, bash into the container
+~~~
+docker exec -it jupyter_container /bin/bash
+~~~
+then type
+~~~
+jupyter server list
+~~~
+
+![Screenshot 2023-06-07 at 8 21 56 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/d1020bc6-161e-4a70-9e7f-a67c2d35255a)
+
+Copy-paste the token on the Jupyter console to launch your notebook. You can even set a password with the token to avoid re-generating the token on every login.
+
+
+### Spark: http://localhost:8181
+
+* Spark Master & Workers.
+
+
+### Minio: http://localhost:9001
+
+* Minio is the best server which is suited for storing unstructured data such as photos, videos, log files, backups, and container.
+* This would serve as our Object Storage Service. 
+* Default username and password for minio is `minio_admin` and `minio_password`. 
+
+### Postgres
+- Access to the Postgres database is available using the following command:
+
+```
+docker exec -it postgres_container psql -U airflow
+
+```
+### PgAdmin: [http://localhost:9001](http://localhost:5050/)
+* PgAdmin is a web GUI for Postgres.
+* Set any password when you are launching it for the first time.
