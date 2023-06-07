@@ -4,6 +4,7 @@ Cryptocurrency is a relatively new asset class and is still subject to a lot of 
 Investor sentiments play a particular role in moving the valuation of crypto. For example, if investors have a positive outlook towards the future of a particular cryptocurrency, they may be more willing to invest in it, leading to an increase in price. Similarly, if investors have a negative outlook towards a cryptocurrency, they may sell their holdings, leading to a decrease in price. Impact of investor/ influencer sentiment on cryptocurrency is our main area of research in this project. 
 
 High-level overview of the lakehouse architecture:
+
 ![Screenshot 2023-06-07 at 6 08 16 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/b7493ea4-c3e2-40f8-9c35-adcf3f1514cc)
 
 **DATA SOURCES:**
@@ -132,8 +133,39 @@ Copy-paste the token on the Jupyter console to launch your notebook. You can eve
 
 ```
 docker exec -it postgres_container psql -U airflow
-
 ```
 ### PgAdmin: [http://localhost:9001](http://localhost:5050/)
 * PgAdmin is a web GUI for Postgres.
 * Set any password when you are launching it for the first time.
+
+### Configuring Superset: How to use this image
+Start a superset instance on port `8080`:
+~~~
+docker run -d -p 8080:8088 -e "SUPERSET_SECRET_KEY=your_secret_key_here" --name superset apache/superset
+~~~
+With your local superset container already running...
+1. Set up your admin account: 
+~~~
+docker exec -it superset superset fab create-admin \
+              --username admin \
+              --firstname Superset \
+              --lastname Admin \
+              --email admin@superset.com \
+              --password admin
+~~~
+2. Migrate local DB to latest
+~~~
+docker exec -it superset superset db upgrade
+~~~
+3. Setup roles
+~~~
+docker exec -it superset superset init
+~~~
+4. Login and take a look:  -- navigate to http://localhost:8080/login/ -- u/p: [admin/admin]
+
+# Configuring the services
+
+## Setting up Minio
+* Enter Minio username and password to launch your homescreen
+
+![Screenshot 2023-06-07 at 9 26 03 PM](https://github.com/saadiahumayun/data-lake/assets/34272512/be24591e-faac-45d9-8f3a-fb731ede85ac)
