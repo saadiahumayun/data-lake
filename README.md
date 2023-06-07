@@ -42,3 +42,40 @@ Overall, we believe this architecture provides a scalable, reliable, and efficie
 
 # Getting Started with Setting up the Containers #
 
+## Docker Images 
+- For ease of use, before starting services, please pull the required docker images first.
+- Run the following commands in order to pull the required docker images.
+
+~~~
+docker pull apache/airflow:2.2.3
+~~~
+~~~
+docker pull bde2020/spark-master:3.2.0-hadoop3.2
+~~~
+~~~
+docker pull bde2020/spark-worker:3.2.0-hadoop3.2
+~~~
+~~~
+docker pull jupyter/pyspark-notebook:spark-3.2.0
+~~~
+~~~
+docker pull postgres:9.5.3
+~~~
+~~~
+docker pull bitnami/zookeeper:3.7.0
+~~~
+~~~
+docker pull apache/nifi-registry:latest
+~~~
+~~~
+docker pull apache/nifi:1.15.0
+~~~
+~~~
+docker pull minio/minio
+~~~
+~~~
+docker pull minio/mc
+~~~
+~~~
+docker pull redis:latest
+
