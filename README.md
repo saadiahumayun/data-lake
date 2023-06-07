@@ -72,6 +72,7 @@ docker pull minio/mc
 ~~~
 ~~~
 docker pull redis:latest
+~~~
 
 ## Dockerfile: Build the Image.
 - A `Dockerfile`  is a text document that contains all the commands a user could call on the command line to assemble an image. 
