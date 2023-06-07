@@ -47,7 +47,7 @@ Overall, we believe this architecture provides a scalable, reliable, and efficie
 - Run the following commands in order to pull the required docker images.
 
 ~~~
-docker pull apache/airflow:2.2.3
+docker pull apache/airflow:2.6.1
 ~~~
 ~~~
 docker pull bde2020/spark-master:3.2.0-hadoop3.2
@@ -56,19 +56,13 @@ docker pull bde2020/spark-master:3.2.0-hadoop3.2
 docker pull bde2020/spark-worker:3.2.0-hadoop3.2
 ~~~
 ~~~
-docker pull jupyter/pyspark-notebook:spark-3.2.0
+docker pull jupyter/pyspark-notebook:latest
 ~~~
 ~~~
-docker pull postgres:9.5.3
+docker pull postgres:13
 ~~~
 ~~~
 docker pull bitnami/zookeeper:3.7.0
-~~~
-~~~
-docker pull apache/nifi-registry:latest
-~~~
-~~~
-docker pull apache/nifi:1.15.0
 ~~~
 ~~~
 docker pull minio/minio
@@ -78,4 +72,19 @@ docker pull minio/mc
 ~~~
 ~~~
 docker pull redis:latest
+
+## Dockerfile: Build the Image.
+- A `Dockerfile`  is a text document that contains all the commands a user could call on the command line to assemble an image. 
+- `Dockerfile` that contians installations of `JAVA-JDK.v11`, `ApacheSpark.v3.3.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.2.3`.
+- navigate to the `docker-airflow` directory, this is where the `Dockerfile` is located:
+    - `Dockerfile` is a `.dockerfile` file that contains the instructions to build the image.
+    - `docker` --> `Dockerfile.Spark`.
+- It will take about ***10minutes*** to build, depending on yor internet speed / platform you use to build the image.
+The Dockerfiles are for building on top of airflow and spark images if you're planning to use Airflow in the pipeline as well. Since, we are not concerned with Airflow as of now, we will leave this for later. Airflow setup will be released in future updates after I have successfully integrated it in my workflow. For now, we will use the other main tech stack.
+
+Navigate to the project directory, then to docker folder. On the CLI, run the command:
+
+~~~
+docker compose -f docker-compose.yml -f docker-compose.spark.yml up -d
+~~~
 
