@@ -31,7 +31,7 @@ Here's a high-level overview of how the above technologies can be connected to b
 
 2. Data processing with Spark: Apache Spark to be used as a big data processing engine to process and analyze the ingested data. Spark can handle both batch and real-time processing and provide scalable and distributed computing. Processed data will be stored in Postgres SQL.
 
-3. Data preprocessing on Jupyter-Pyspark: Spark to integrate data from Kafka, Cassandra, and Postgres. Spark can provide a unified view of the data, regardless of its source or format.
+3. Data preprocessing on Jupyter-Pyspark: Spark to integrate data from Minio and Postgres. Spark can provide a unified view of the data, regardless of its source or format.
 
 4. Data storage with Postgres: PostgreSQL will be used as a relational database to store structured data. PostgreSQL provides a rich set of features for data management, including ACID compliance and support for complex queries.
 
